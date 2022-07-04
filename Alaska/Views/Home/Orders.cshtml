@@ -1,0 +1,90 @@
+﻿@using Alaska.Models
+
+@{
+    DB_Context db = new DB_Context();
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_CashLayout.cshtml";
+    int id = int.Parse(Session["userid"].ToString());
+    List<Alaska.Models.Shipping_Details> orders = db.Shipping_Details.Where(n => n.User_ID == id).ToList();
+    List<long> refund = db.Refund_Details.Select(n=>n.Shipping_ID).ToList();
+    DateTime dateNow = DateTime.Now;
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>ORDERS</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
+                    <li class="breadcrumb-item active">Your Orders</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Shipping ID</th>
+                                <th>Address</th>
+                                <th>Area</th>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th>Amount Paid</th>
+                                <th>Payment Method</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Refund Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (orders.Count != 0)
+                            {
+                                for (int i = 0; i < orders.Count; i++)
+                                {
+                            <tr>
+                                <td>@orders[i].Shipping_ID</td>
+                                <td>@orders[i].Address</td>
+                                <td>@orders[i].Area</td>
+                                <td>@orders[i].City</td>
+                                <td>@orders[i].Country</td>
+                                <td>@orders[i].AmountPaid.ToString("0.00")</td>
+                                <td>@orders[i].Payment_Type</td>
+                                <td>@orders[i].Date</td>
+                                <td>@orders[i].Time</td>
+                                @{
+                                    DateTime dateOrder = DateTime.Parse(orders[i].Date);
+                                    TimeSpan Diff = dateNow - dateOrder;
+                                    int TotalDays = Diff.Days;
+
+                                    if (TotalDays <= 45)
+                                    {
+                                        if (!refund.Contains(orders[i].Shipping_ID))
+                                        {
+                                            <td><a href="@Url.Action("Refund", "Home", new { id = orders[i].Shipping_ID })" class="ml-auto btn hvr-hover" style="color:white">Refund</a></td>
+                                        }
+                                    }
+                                }
+
+                            </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>Orders List is Empty</tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

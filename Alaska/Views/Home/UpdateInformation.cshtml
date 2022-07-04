@@ -1,0 +1,63 @@
+﻿@model Alaska.Models.User
+
+@{
+    ViewBag.Title = "Update Information";
+    Layout = "~/Views/Shared/_CashLayout.cshtml";
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>PROFILE</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
+                    <li class="breadcrumb-item active">Update Information</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col-lg-11 col-sm-11">
+
+        <form class="needs-validation" validate action="~/Home/UpdateInformation" id="form1" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+
+                    <input type="hidden" class="form-control" name="User_ID" value="@Model.User_ID" readonly>
+                    <input type="hidden" class="form-control" name="User_Password" value="@Model.User_Password" readonly>
+                    <input type="hidden" class="form-control" name="User_Role" value="@Model.User_Role" readonly>
+
+                    <label for="firstName">First Name </label>
+                    @Html.TextBoxFor(n => n.First_Name, new { @placeholder = "First Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.First_Name, "", new { @class = "text-danger" })
+                    <div class="invalid-feedback"> First Name is Required. </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name </label>
+                    @Html.TextBoxFor(n => n.Last_Name, new { @placeholder = "Last Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(n => n.Last_Name, "", new { @class = "text-danger" })
+                    <div class="invalid-feedback"> Last Name is Required. </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">Email Address </label>
+                @Html.TextBoxFor(n => n.User_Email, new { @placeholder = "Email", @class = "form-control" })
+                @Html.ValidationMessageFor(n => n.User_Email, "", new { @class = "text-danger" })
+                <div class="invalid-feedback"> Email is Required. </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">Phone Number </label>
+                @Html.TextBoxFor(n => n.User_Phone, new { @placeholder = "Phone Number", @class = "form-control" })
+                @Html.ValidationMessageFor(n => n.User_Phone, "", new { @class = "text-danger" })
+                <div class="invalid-feedback"> Phone is Required. </div>
+            </div>
+            <hr class="mb-1">
+            <div class="col-12 d-flex shopping-box">
+                <input type="submit" class="ml-auto btn hvr-hover" value="Update Information" />
+            </div>
+        </form>
+    </div>
+</div>

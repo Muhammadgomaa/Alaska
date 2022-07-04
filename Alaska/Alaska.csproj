@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A788BE6-AFC6-405D-A9AA-86056F0A9C55}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Alaska</RootNamespace>
+    <AssemblyName>Alaska</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\DB_Context.cs" />
+    <Compile Include="Models\Invoice_Details.cs" />
+    <Compile Include="Models\Items.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Refund_Details.cs" />
+    <Compile Include="Models\Shipping_Details.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Dashboard_Files\assets\css\demo.css" />
+    <Content Include="Dashboard_Files\assets\img\avatars\1.png" />
+    <Content Include="Dashboard_Files\assets\img\avatars\5.png" />
+    <Content Include="Dashboard_Files\assets\img\avatars\6.png" />
+    <Content Include="Dashboard_Files\assets\img\avatars\7.png" />
+    <Content Include="Dashboard_Files\assets\img\backgrounds\18.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\1.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\11.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\12.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\13.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\17.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\18.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\19.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\2.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\20.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\3.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\4.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\5.jpg" />
+    <Content Include="Dashboard_Files\assets\img\elements\7.jpg" />
+    <Content Include="Dashboard_Files\assets\img\favicon\favicon.ico" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\asana.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\behance.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\dribbble.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\facebook.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\github.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\google.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\instagram.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\slack.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\brands\twitter.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\chart.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\paypal.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\wallet.png" />
+    <Content Include="Dashboard_Files\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="Dashboard_Files\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="Dashboard_Files\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="Dashboard_Files\assets\img\layouts\layout-container-light.png" />
+    <Content Include="Dashboard_Files\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="Dashboard_Files\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="Dashboard_Files\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="Dashboard_Files\assets\js\config.js" />
+    <Content Include="Dashboard_Files\assets\js\dashboards-analytics.js" />
+    <Content Include="Dashboard_Files\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="Dashboard_Files\assets\js\form-basic-inputs.js" />
+    <Content Include="Dashboard_Files\assets\js\main.js" />
+    <Content Include="Dashboard_Files\assets\js\pages-account-settings-account.js" />
+    <Content Include="Dashboard_Files\assets\js\ui-modals.js" />
+    <Content Include="Dashboard_Files\assets\js\ui-popover.js" />
+    <Content Include="Dashboard_Files\assets\js\ui-toasts.js" />
+    <Content Include="Dashboard_Files\assets\vendor\css\core.css" />
+    <Content Include="Dashboard_Files\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="Dashboard_Files\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="Dashboard_Files\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="Dashboard_Files\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="Dashboard_Files\assets\vendor\css\theme-default.css" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons.css" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="Dashboard_Files\assets\vendor\js\bootstrap.js" />
+    <Content Include="Dashboard_Files\assets\vendor\js\helpers.js" />
+    <Content Include="Dashboard_Files\assets\vendor\js\menu.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Dashboard_Files\assets\vendor\libs\popper\popper.js" />
+    <Content Include="Dashboard_Files\js\bootstrap.js" />
+    <Content Include="Dashboard_Files\js\helpers.js" />
+    <Content Include="Dashboard_Files\js\menu.js" />
+    <Content Include="Dashboard_Files\libs\apex-charts\apexcharts.js" />
+    <Content Include="Dashboard_Files\libs\highlight\highlight.js" />
+    <Content Include="Dashboard_Files\libs\jquery\jquery.js" />
+    <Content Include="Dashboard_Files\libs\masonry\masonry.js" />
+    <Content Include="Dashboard_Files\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Dashboard_Files\libs\popper\popper.js" />
+    <Content Include="Dashboard_Files\tasks\build.js" />
+    <Content Include="Dashboard_Files\tasks\prod.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Login_Files\css\all.min.css" />
+    <Content Include="Login_Files\css\main.css" />
+    <Content Include="Login_Files\css\util.css" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Login_Files\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="Login_Files\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="Login_Files\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Login_Files\images\bg-01.jpg" />
+    <Content Include="Login_Files\images\bg-02.jpg" />
+    <Content Include="Login_Files\images\icons\favicon.ico" />
+    <Content Include="Login_Files\js\main.js" />
+    <Content Include="Login_Files\vendor\animate\animate.css" />
+    <Content Include="Login_Files\vendor\animsition\css\animsition.css" />
+    <Content Include="Login_Files\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Login_Files\vendor\animsition\js\animsition.js" />
+    <Content Include="Login_Files\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Login_Files\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Login_Files\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Login_Files\vendor\bootstrap\js\popper.js" />
+    <Content Include="Login_Files\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Login_Files\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Login_Files\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Login_Files\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Login_Files\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Login_Files\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Login_Files\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Login_Files\vendor\daterangepicker\moment.js" />
+    <Content Include="Login_Files\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Login_Files\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Login_Files\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Login_Files\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Login_Files\vendor\select2\select2.css" />
+    <Content Include="Login_Files\vendor\select2\select2.js" />
+    <Content Include="Login_Files\vendor\select2\select2.min.css" />
+    <Content Include="Login_Files\vendor\select2\select2.min.js" />
+    <Content Include="Main_Template_Files\images\banner_1.jpg" />
+    <Content Include="Main_Template_Files\images\banner_2.jpg" />
+    <Content Include="Main_Template_Files\images\banner_3.jpg" />
+    <Content Include="Main_Template_Files\images\blog_1.jpg" />
+    <Content Include="Main_Template_Files\images\blog_2.jpg" />
+    <Content Include="Main_Template_Files\images\blog_3.jpg" />
+    <Content Include="Main_Template_Files\images\deal_ofthe_week.png" />
+    <Content Include="Main_Template_Files\images\desc_1.jpg" />
+    <Content Include="Main_Template_Files\images\desc_2.jpg" />
+    <Content Include="Main_Template_Files\images\desc_3.jpg" />
+    <Content Include="Main_Template_Files\images\map_marker.png" />
+    <Content Include="Main_Template_Files\images\product_1.png" />
+    <Content Include="Main_Template_Files\images\product_10.png" />
+    <Content Include="Main_Template_Files\images\product_2.png" />
+    <Content Include="Main_Template_Files\images\product_3.png" />
+    <Content Include="Main_Template_Files\images\product_4.png" />
+    <Content Include="Main_Template_Files\images\product_5.png" />
+    <Content Include="Main_Template_Files\images\product_6.png" />
+    <Content Include="Main_Template_Files\images\product_7.png" />
+    <Content Include="Main_Template_Files\images\product_8.png" />
+    <Content Include="Main_Template_Files\images\product_9.png" />
+    <Content Include="Main_Template_Files\images\single_1.jpg" />
+    <Content Include="Main_Template_Files\images\single_1_thumb.jpg" />
+    <Content Include="Main_Template_Files\images\single_2.jpg" />
+    <Content Include="Main_Template_Files\images\single_2_thumb.jpg" />
+    <Content Include="Main_Template_Files\images\single_3.jpg" />
+    <Content Include="Main_Template_Files\images\single_3_thumb.jpg" />
+    <Content Include="Main_Template_Files\images\slider_1.jpg" />
+    <Content Include="Main_Template_Files\js\categories_custom.js" />
+    <Content Include="Main_Template_Files\js\contact_custom.js" />
+    <Content Include="Main_Template_Files\js\custom.js" />
+    <Content Include="Main_Template_Files\js\jquery-3.2.1.min.js" />
+    <Content Include="Main_Template_Files\js\single_custom.js" />
+    <Content Include="Main_Template_Files\plugins\easing\easing.js" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Main_Template_Files\plugins\Isotope\isotope.pkgd.min.js" />
+    <Content Include="Main_Template_Files\plugins\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="Main_Template_Files\plugins\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\ajax-loader.gif" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <Content Include="Main_Template_Files\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <Content Include="Main_Template_Files\plugins\themify-icons\fonts\themify.svg" />
+    <Content Include="Main_Template_Files\plugins\themify-icons\themify-icons.css" />
+    <Content Include="Main_Template_Files\styles\bootstrap4\bootstrap.min.css" />
+    <Content Include="Main_Template_Files\styles\bootstrap4\bootstrap.min.js" />
+    <Content Include="Main_Template_Files\styles\bootstrap4\popper.js" />
+    <Content Include="Main_Template_Files\styles\categories_responsive.css" />
+    <Content Include="Main_Template_Files\styles\categories_styles.css" />
+    <Content Include="Main_Template_Files\styles\contact_responsive.css" />
+    <Content Include="Main_Template_Files\styles\contact_styles.css" />
+    <Content Include="Main_Template_Files\styles\main_styles.css" />
+    <Content Include="Main_Template_Files\styles\responsive.css" />
+    <Content Include="Main_Template_Files\styles\single_responsive.css" />
+    <Content Include="Main_Template_Files\styles\single_styles.css" />
+    <Content Include="Main_Template_Files\webfonts\fa-brands-400.svg" />
+    <Content Include="Main_Template_Files\webfonts\fa-regular-400.svg" />
+    <Content Include="Main_Template_Files\webfonts\fa-solid-900.svg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Main_Template_Files\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Main_Template_Files\plugins\themify-icons\fonts\themify.eot" />
+    <Content Include="Main_Template_Files\plugins\themify-icons\fonts\themify.ttf" />
+    <Content Include="Main_Template_Files\plugins\themify-icons\fonts\themify.woff" />
+    <Content Include="Main_Template_Files\webfonts\fa-brands-400.eot" />
+    <Content Include="Main_Template_Files\webfonts\fa-brands-400.ttf" />
+    <Content Include="Main_Template_Files\webfonts\fa-brands-400.woff" />
+    <Content Include="Main_Template_Files\webfonts\fa-brands-400.woff2" />
+    <Content Include="Main_Template_Files\webfonts\fa-regular-400.eot" />
+    <Content Include="Main_Template_Files\webfonts\fa-regular-400.ttf" />
+    <Content Include="Main_Template_Files\webfonts\fa-regular-400.woff" />
+    <Content Include="Main_Template_Files\webfonts\fa-regular-400.woff2" />
+    <Content Include="Main_Template_Files\webfonts\fa-solid-900.eot" />
+    <Content Include="Main_Template_Files\webfonts\fa-solid-900.ttf" />
+    <Content Include="Main_Template_Files\webfonts\fa-solid-900.woff" />
+    <Content Include="Main_Template_Files\webfonts\fa-solid-900.woff2" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Login_Files\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Login_Files\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Login_Files\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Login_Files\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Login_Files\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Login_Files\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Login_Files\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="Dashboard_Files\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="Dashboard_Files\fonts\boxicons.scss" />
+    <Content Include="Dashboard_Files\libs\apex-charts\apex-charts.scss" />
+    <Content Include="Dashboard_Files\libs\highlight\highlight-github.scss" />
+    <Content Include="Dashboard_Files\libs\highlight\highlight.scss" />
+    <Content Include="Dashboard_Files\libs\perfect-scrollbar\perfect-scrollbar.scss" />
+    <Content Include="Dashboard_Files\scss\core.scss" />
+    <Content Include="Dashboard_Files\scss\pages\page-account-settings.scss" />
+    <Content Include="Dashboard_Files\scss\pages\page-auth.scss" />
+    <Content Include="Dashboard_Files\scss\pages\page-icons.scss" />
+    <Content Include="Dashboard_Files\scss\pages\page-misc.scss" />
+    <Content Include="Dashboard_Files\scss\theme-default.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_card.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_close.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_include.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_root.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_type.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="Dashboard_Files\scss\_bootstrap.scss" />
+    <Content Include="Dashboard_Files\scss\_colors.scss" />
+    <Content Include="Dashboard_Files\scss\_components.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_app-brand.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_avatar.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_footer.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_menu.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_misc.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_navbar.scss" />
+    <Content Include="Dashboard_Files\scss\_components\mixins\_text-divider.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_app-brand.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_avatar.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_base.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_common.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_footer.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_include.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_layout.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_menu.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_mixins.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_text-divider.scss" />
+    <Content Include="Dashboard_Files\scss\_components\_variables.scss" />
+    <Content Include="Dashboard_Files\scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="Dashboard_Files\scss\_custom-variables\_components.scss" />
+    <Content Include="Dashboard_Files\scss\_custom-variables\_libs.scss" />
+    <Content Include="Dashboard_Files\scss\_custom-variables\_pages.scss" />
+    <Content Include="Dashboard_Files\scss\_custom-variables\_support.scss" />
+    <Content Include="Dashboard_Files\scss\_theme\_common.scss" />
+    <Content Include="Dashboard_Files\scss\_theme\_theme.scss" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Second_Template_Files\css\all.css" />
+    <Content Include="Second_Template_Files\css\animate.css" />
+    <Content Include="Second_Template_Files\css\baguetteBox.min.css" />
+    <Content Include="Second_Template_Files\css\bootsnav.css" />
+    <Content Include="Second_Template_Files\css\bootstrap-select.css" />
+    <Content Include="Second_Template_Files\css\bootstrap.min.css" />
+    <Content Include="Second_Template_Files\css\carousel-ticker.css" />
+    <Content Include="Second_Template_Files\css\code_animate.css" />
+    <Content Include="Second_Template_Files\css\custom.css" />
+    <Content Include="Second_Template_Files\css\jquery-ui.css" />
+    <Content Include="Second_Template_Files\css\owl.carousel.min.css" />
+    <Content Include="Second_Template_Files\css\responsive.css" />
+    <Content Include="Second_Template_Files\css\style.css" />
+    <Content Include="Second_Template_Files\css\superslides.css" />
+    <Content Include="Second_Template_Files\images\about-img.jpg" />
+    <Content Include="Second_Template_Files\images\add-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\add-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\all-bg-title.jpg" />
+    <Content Include="Second_Template_Files\images\apple-touch-icon.png" />
+    <Content Include="Second_Template_Files\images\banner-01.jpg" />
+    <Content Include="Second_Template_Files\images\banner-02.jpg" />
+    <Content Include="Second_Template_Files\images\banner-03.jpg" />
+    <Content Include="Second_Template_Files\images\big-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\big-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\big-img-03.jpg" />
+    <Content Include="Second_Template_Files\images\blog-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\blog-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\blog-img.jpg" />
+    <Content Include="Second_Template_Files\images\categories_img_01.jpg" />
+    <Content Include="Second_Template_Files\images\categories_img_02.jpg" />
+    <Content Include="Second_Template_Files\images\categories_img_03.jpg" />
+    <Content Include="Second_Template_Files\images\contact-bg.jpg" />
+    <Content Include="Second_Template_Files\images\favicon.ico" />
+    <Content Include="Second_Template_Files\images\gallery-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-03.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-04.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-05.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-06.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-07.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-08.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-09.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-10.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-11.jpg" />
+    <Content Include="Second_Template_Files\images\gallery-img-12.jpg" />
+    <Content Include="Second_Template_Files\images\img-1.jpg" />
+    <Content Include="Second_Template_Files\images\img-2.jpg" />
+    <Content Include="Second_Template_Files\images\img-3.jpg" />
+    <Content Include="Second_Template_Files\images\img-pro-01.jpg" />
+    <Content Include="Second_Template_Files\images\img-pro-02.jpg" />
+    <Content Include="Second_Template_Files\images\img-pro-03.jpg" />
+    <Content Include="Second_Template_Files\images\img-pro-04.jpg" />
+    <Content Include="Second_Template_Files\images\ins-bg.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-03.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-04.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-05.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-06.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-07.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-08.jpg" />
+    <Content Include="Second_Template_Files\images\instagram-img-09.jpg" />
+    <Content Include="Second_Template_Files\images\logo.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\1.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\2.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\3.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\4.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\5.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\6.png" />
+    <Content Include="Second_Template_Files\images\payment-icon\7.png" />
+    <Content Include="Second_Template_Files\images\smp-img-01.jpg" />
+    <Content Include="Second_Template_Files\images\smp-img-02.jpg" />
+    <Content Include="Second_Template_Files\images\smp-img-03.jpg" />
+    <Content Include="Second_Template_Files\js\baguetteBox.min.js" />
+    <Content Include="Second_Template_Files\js\bootsnav.js" />
+    <Content Include="Second_Template_Files\js\bootstrap-select.js" />
+    <Content Include="Second_Template_Files\js\bootstrap.min.js" />
+    <Content Include="Second_Template_Files\js\contact-form-script.js" />
+    <Content Include="Second_Template_Files\js\custom.js" />
+    <Content Include="Second_Template_Files\js\form-validator.min.js" />
+    <Content Include="Second_Template_Files\js\images-loded.min.js" />
+    <Content Include="Second_Template_Files\js\inewsticker.js" />
+    <Content Include="Second_Template_Files\js\isotope.min.js" />
+    <Content Include="Second_Template_Files\js\jquery-3.2.1.min.js" />
+    <Content Include="Second_Template_Files\js\jquery-ui.js" />
+    <Content Include="Second_Template_Files\js\jquery.nicescroll.min.js" />
+    <Content Include="Second_Template_Files\js\jquery.superslides.min.js" />
+    <Content Include="Second_Template_Files\js\owl.carousel.min.js" />
+    <Content Include="Second_Template_Files\js\popper.min.js" />
+    <Content Include="Second_Template_Files\php\form-process.php" />
+    <Content Include="Second_Template_Files\webfonts\fa-brands-400.svg" />
+    <Content Include="Second_Template_Files\webfonts\fa-regular-400.svg" />
+    <Content Include="Second_Template_Files\webfonts\fa-solid-900.svg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Second_Template_Files\webfonts\fa-brands-400.eot" />
+    <Content Include="Second_Template_Files\webfonts\fa-brands-400.ttf" />
+    <Content Include="Second_Template_Files\webfonts\fa-brands-400.woff" />
+    <Content Include="Second_Template_Files\webfonts\fa-brands-400.woff2" />
+    <Content Include="Second_Template_Files\webfonts\fa-regular-400.eot" />
+    <Content Include="Second_Template_Files\webfonts\fa-regular-400.ttf" />
+    <Content Include="Second_Template_Files\webfonts\fa-regular-400.woff" />
+    <Content Include="Second_Template_Files\webfonts\fa-regular-400.woff2" />
+    <Content Include="Second_Template_Files\webfonts\fa-solid-900.eot" />
+    <Content Include="Second_Template_Files\webfonts\fa-solid-900.ttf" />
+    <Content Include="Second_Template_Files\webfonts\fa-solid-900.woff" />
+    <Content Include="Second_Template_Files\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Shared\_CashLayout.cshtml" />
+    <Content Include="Views\Home\Shop.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
+    <Content Include="Views\Admin\UpdateCategory.cshtml" />
+    <Content Include="Views\Admin\Product.cshtml" />
+    <Content Include="Views\Admin\AddProduct.cshtml" />
+    <Content Include="Views\Admin\UpdateProduct.cshtml" />
+    <Content Include="Views\Admin\Account.cshtml" />
+    <Content Include="Views\Home\AddAccount.cshtml" />
+    <Content Include="Views\Home\UpdateAccount.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\CheckoutDetails.cshtml" />
+    <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
+    <Content Include="Views\Home\Refund.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
+    <Content Include="Views\Admin\Refund.cshtml" />
+    <Content Include="Views\Home\UpdateInformation.cshtml" />
+    <Content Include="Views\Home\UpdatePassword.cshtml" />
+    <Content Include="Views\Admin\Message.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Category_Images\" />
+    <Folder Include="Product_Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52161</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52161/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

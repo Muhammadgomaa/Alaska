@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Alaska.Models.Product> products = ViewBag.Prod;
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> Product /</span> Products Details</h4>
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Product Table</h5>
+            @Html.ActionLink("Add New Product", "AddProduct", "Admin", new { @style = "color:#566A7F;width:200px;padding:20px" })
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
+                            <th>Product Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @for (int i = 0; i < products.Count; i++)
+                        {
+                        <tr>
+                            <td>@products[i].Prod_ID</td>
+                            <td><strong>@products[i].Prod_Name</strong></td>
+                            <td>@products[i].Quantity</td>
+                            <td>@products[i].Price "L.E"</td>
+                            <td>@products[i].Category.Cat_Name</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="@Url.Action("UpdateProduct",new { id=products[i].Prod_ID})"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="@Url.Action("DeleteProduct",new { id=products[i].Prod_ID})"><i class="bx bx-trash me-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

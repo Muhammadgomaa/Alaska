@@ -1,0 +1,248 @@
+﻿@using Alaska.Models;
+
+@{ 
+       DB_Context dB = new DB_Context();
+       int id = int.Parse(Session["userid"].ToString());
+       User user = dB.Users.Where(n => n.User_ID == id).FirstOrDefault(); 
+    }
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>@ViewBag.title</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="apple-touch-icon" href="~/Second_Template_Files/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Second_Template_Files/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Second_Template_Files/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Second_Template_Files/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Second_Template_Files/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="~/Second_Template_Files/https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="~/Second_Template_Files/https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    @if (user.User_Role == "Admin")
+                    {
+        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+            <li class="nav-item"><a class="nav-link" href="~/Home/Home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Home/About">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Admin/Dashboard">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Home/Contact">Contact Us</a></li>
+            <li class="dropdown">
+                <a href="" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">My Account</a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/Home/Account">Profile</a></li>
+                    <li><a href="~/Home/Logout">Logout</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP CART</a>
+                <ul class="dropdown-menu">
+                    @if (Session["cart"] != null)
+                    {
+                        foreach (var item in (List<Items>)Session["cart"])
+                        {
+    <li><a href="@Url.Action("RemoveCart","Home",new { id = item.Product.Prod_ID })">@item.Product.Prod_Name <i class="fa fa-times"></i> </a></li> }
+    <li><a>@Html.ActionLink("Shop Cart Details", "Checkout")</a></li>}
+                </ul>
+            </li>
+        </ul> }
+                    else
+                    {
+        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+            <li class="nav-item"><a class="nav-link" href="~/Home/Home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Home/About">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Home/Contact">Contact Us</a></li>
+            <li class="dropdown">
+                <a href="" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">My Account</a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/Home/Account">Profile</a></li>
+                    <li><a href="~/Home/Logout">Logout</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP CART</a>
+                <ul class="dropdown-menu">
+                    @if (Session["cart"] != null)
+                    {
+                        foreach (var item in (List<Items>)Session["cart"])
+                        {
+    <li><a href="@Url.Action("RemoveCart","Home",new { id = item.Product.Prod_ID })">@item.Product.Prod_Name <i class="fa fa-times"></i> </a></li>
+ }
+<li><a>@Html.ActionLink("Shop Cart Details", "Checkout")</a></li>
+}
+                </ul>
+            </li>
+        </ul>            }
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    @RenderBody()
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Business Time</h3>
+                            <ul class="list-time">
+                                <li>ALL WEEK: 09.00 AM to 12.00 AM</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Social Media</h3>
+                            <p>Opinion Matter</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row" id="contact">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About Alaska</h4>
+                            <p>In Alaska, we're dedicated to giving you the very best of fruits and vegetables, with a focus on three characteristics, ie: dependability, customer service, and uniqueness. Founded in 2022 by Muhammad Gomaa, Volcano has come a long way from its beginnings in a starting location, ie: the home office. When Muhammad Gomaa first started out, his passion drove him to give him the impetus to turn hard work and inspiration into a booming online store. We now serve customers all over Egypt and are thrilled to be a part of the eco-friendly. We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us on hotline 20020.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="~/Home/About">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Maadi , Cairo,<br> Egypt.</p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone : +20-01141325682</p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: gomaam671@yahoo.com</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+            @DateTime.Now.Year All Rights Reserved. &copy; Made with ❤️ by  <a href="">Muhammad Gomaa</a>
+        </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="~/Second_Template_Files/#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/Second_Template_Files/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Second_Template_Files/js/popper.min.js"></script>
+    <script src="~/Second_Template_Files/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/Second_Template_Files/js/jquery.superslides.min.js"></script>
+    <script src="~/Second_Template_Files/js/bootstrap-select.js"></script>
+    <script src="~/Second_Template_Files/js/inewsticker.js"></script>
+    <script src="~/Second_Template_Files/js/bootsnav.js."></script>
+    <script src="~/Second_Template_Files/js/images-loded.min.js"></script>
+    <script src="~/Second_Template_Files/js/isotope.min.js"></script>
+    <script src="~/Second_Template_Files/js/owl.carousel.min.js"></script>
+    <script src="~/Second_Template_Files/js/baguetteBox.min.js"></script>
+    <script src="~/Second_Template_Files/js/form-validator.min.js"></script>
+    <script src="~/Second_Template_Files/js/contact-form-script.js"></script>
+    <script src="~/Second_Template_Files/js/custom.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script type="text/javascript">
+        $("body").on("submit", "#form1", function () {
+            return confirm("Do you want to submit?");
+        });
+    </script>
+    @if (ViewBag.Message != null)
+    {
+<script type="text/javascript">
+            window.onload = function () {
+                alert('@ViewBag.Message');
+            };
+</script>
+    }
+</body>
+
+</html>

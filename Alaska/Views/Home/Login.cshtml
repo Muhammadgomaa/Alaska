@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Login_Files/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Login_Files/css/main.css">
+    <link rel="stylesheet" href="~/Login_Files/css/all.min.css">
+    <link href="~/Main_Template_Files/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url(../Login_Files/images/bg-02.jpg);">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="~/Home/Login" method="post">
+                    <span class="login100-form-logo">
+                        <i class="fa fa-shopping-bag"></i>
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="User_Email" placeholder="Useremail">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="User_Password" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" value="true" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <br />
+
+                    @if (ViewBag.Status != null)
+                    {
+                        <div class="text-center p-t-90" style="color:white">
+                              <span>@ViewBag.Status</span>
+                        </div>
+                    }
+
+                    <br />
+
+                    <div class="text-center p-t-90">
+                        <label>
+                            @Html.ActionLink("Forget Password?", "Register", "Home", new { style = "color:white" })
+                        </label>
+                        <label>
+                            @Html.ActionLink("Register Now", "Register", "Home", new { style = "color:white" })
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Login_Files/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Login_Files/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Files/js/main.js"></script>
+
+</body>
+</html>

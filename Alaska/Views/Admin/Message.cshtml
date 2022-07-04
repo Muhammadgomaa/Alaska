@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Alaska.Models.Message> messages = ViewBag.Mess;
+
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> Message /</span> User's Feedback</h4>
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Message Details Table</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Message Description</th>
+                            <th>Message Sender</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @for (int i = 0; i < messages.Count; i++)
+                        {
+                        <tr>
+                            <td><strong>@messages[i].Message_Desc</strong></td>
+                            <td><strong>@messages[i].User.First_Name  @messages[i].User.Last_Name</strong></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

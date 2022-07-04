@@ -1,0 +1,337 @@
+﻿@using Alaska.Models;
+
+@{
+    DB_Context dB = new DB_Context();
+    ViewBag.Title = "Checkout Details";
+    Layout = "~/Views/Shared/_CashLayout.cshtml";
+    int id = int.Parse(Session["userid"].ToString());
+    User user = dB.Users.Where(n => n.User_ID == id).FirstOrDefault();
+    DateTime dateTime = DateTime.Now;
+    string date = dateTime.ToString("dd-MM-yyyy");
+    string time = dateTime.ToString("HH:mm");
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>CHECKOUT DETAILS</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
+                    <li class="breadcrumb-item active">Checkout Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ double Total = 0;}
+                            @foreach (Items items in (List<Items>)Session["cart"])
+                            {
+                                double total = items.Quantity * items.Product.Price;
+                                Total = Total + total;
+                                <tr>
+                                    <td>@items.Product.Prod_Name</td>
+                                    <td>@items.Product.Price "L.E"</td>
+                                    <td>@items.Quantity</td>
+                                    <td class="total-pr">
+                                        <p>@total "L.E"</p>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="order-box">
+                    <div class="title-left">
+                        <h3>Order Summary</h3>
+                    </div>
+                    <div class="d-flex">
+                        <h4>Sub Total</h4>
+                        <div class="ml-auto font-weight-bold"> @Total "L.E" </div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>Discount</h4>
+                        <div class="ml-auto font-weight-bold"> 0 "L.E" </div>
+                    </div>
+                    <hr class="my-1">
+                    <div class="d-flex">
+                        <h4>Tax</h4>
+                        @{double Tax = Total * 0.14;}
+                        <div class="ml-auto font-weight-bold"> @Tax "L.E" </div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>Shipping Cost</h4>
+                        <div class="ml-auto font-weight-bold"> Free </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex gr-total">
+                        <h5>Grand Total</h5>
+                        @{ double Grand = Tax + Total;}
+                        <div class="ml-auto h5"> @Grand "L.E" </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-lg-6 col-sm-6">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>Shipping Information</h3>
+                    </div>
+                    <form class="needs-validation" id="form1" validate action="~/Home/ShippingDetails">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+
+                                <input type="hidden" class="form-control" name="User_ID" value="@user.User_ID" readonly>
+                                <input type="hidden" class="form-control" name="Date" value="@date" readonly>
+                                <input type="hidden" class="form-control" name="Time" value="@time" readonly>
+
+                                <label for="firstName">First Name *</label>
+                                <input type="text" class="form-control" value="@user.First_Name" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Last name *</label>
+                                <input type="text" class="form-control" value="@user.Last_Name" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" value="@user.User_Email" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Phone Number *</label>
+                            <input type="text" class="form-control" value="@user.User_Phone" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address">Address *</label>
+                            <input type="text" class="form-control" id="address" name="Address" required>
+                            <div class="invalid-feedback"> Please Enter Your Shipping Address. </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="country">Country *</label>
+                                <select class="wide w-100" id="country" name="Country" required>
+                                    <option data-display="Select">Choose...</option>
+                                    <option value="Egypt">Egypt</option>
+                                </select>
+                                <div class="invalid-feedback"> Please Select a Valid Country. </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">Gov *</label>
+                                <select class="wide w-100" id="state" name="City" required>
+                                    <option data-display="Select">Choose...</option>
+                                    <option>Alexandria</option>
+                                    <option>Aswan</option>
+                                    <option>Asyut</option>
+                                    <option>Beheira</option>
+                                    <option>Beni Suef</option>
+                                    <option>Cairo</option>
+                                    <option>Dakahlia</option>
+                                    <option>Damietta</option>
+                                    <option>Faiyum</option>
+                                    <option>Gharbia</option>
+                                    <option>Giza</option>
+                                    <option>Ismailia</option>
+                                    <option>Kafr Elsheikh</option>
+                                    <option>Luxor</option>
+                                    <option>Matruh</option>
+                                    <option>Minya</option>
+                                    <option>Monufia</option>
+                                    <option>New Valley</option>
+                                    <option>North Sinai</option>
+                                    <option>Port Said</option>
+                                    <option>Qalyubia</option>
+                                    <option>Qena</option>
+                                    <option>Red Sea</option>
+                                    <option>Sharqia</option>
+                                    <option>Sohag</option>
+                                    <option>South Sinai</option>
+                                    <option>Suez</option>
+                                </select>
+                                <div class="invalid-feedback"> Please Provide a Valid City. </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">Area *</label>
+                                <select class="wide w-100" id="state" name="Area" required>
+                                    <option data-display="Select">Choose...</option>
+                                    <option>6 October </option>
+                                    <option>10th of Ramadan </option>
+                                    <option>15 May</option>
+                                    <option>Abdeen </option>
+                                    <option>Abnub </option>
+                                    <option>Abu El Matamir</option>
+                                    <option>Abu Hammad</option>
+                                    <option>Abu Hummus</option>
+                                    <option>Abu Kebir</option>
+                                    <option>Abu Qirqas</option>
+                                    <option>Abu Radis</option>
+                                    <option>Abu Simbel</option>
+                                    <option>Abu Tig </option>
+                                    <option>Abu Tisht</option>
+                                    <option>Abu Zenima</option>
+                                    <option>Aga </option>
+                                    <option>Agouza </option>
+                                    <option>Ain Shams</option>
+                                    <option>Akhmim</option>
+                                    <option>Amreya </option>
+                                    <option>Arish</option>
+                                    <option>Armant</option>
+                                    <option>Ashmoun </option>
+                                    <option>Ataka </option>
+                                    <option>Atfih </option>
+                                    <option>Awlad Saqr</option>
+                                    <option>Awsim </option>
+                                    <option>Azbakeya </option>
+                                    <option>Bab El Sharia</option>
+                                    <option>Bab Sharq </option>
+                                    <option>Badr </option>
+                                    <option>Banha </option>
+                                    <option>Baris Shurta</option>
+                                    <option>Basyoun </option>
+                                    <option>Beni Ebeid</option>
+                                    <option>Beni Mazar</option>
+                                    <option>Beni Suef </option>
+                                    <option>Biba </option>
+                                    <option>Bilbeis </option>
+                                    <option>Bilqas </option>
+                                    <option>Bir El Abd</option>
+                                    <option>Birket El Sab</option>
+                                    <option>Biyala </option>
+                                    <option>Borg El Arab</option>
+                                    <option>Bulaq </option>
+                                    <option>Bulaq El Dakrur</option>
+                                    <option>Burullus </option>
+                                    <option>Dahab </option>
+                                    <option>Dairut </option>
+                                    <option>Damanhur </option>
+                                    <option>Damietta </option>
+                                    <option>Dar El Salam</option>
+                                    <option>Daraw </option>
+                                    <option>Deir Mawas</option>
+                                    <option>Dekernes </option>
+                                    <option>Dekhela </option>
+                                    <option>Desouk </option>
+                                    <option>Dishna </option>
+                                    <option>Diyarb Negm</option>
+                                    <option>Dokki </option>
+                                    <option>Edfu </option>
+                                    <option>Edku </option>
+                                    <option>El Ahram</option>
+                                    <option>El Arab </option>
+                                    <option>El Arbein </option>
+                                    <option>El Atareen</option>
+                                    <option>El Ayyat</option>
+                                    <option>El Badari</option>
+                                    <option>El Badrashein</option>
+                                    <option>El Bagour </option>
+                                    <option>El Balyana</option>
+                                    <option>El Basatin</option>
+                                    <option>El Dabaa</option>
+                                    <option>El Darb El Ahmar </option>
+                                    <option>El Dawahy</option>
+                                    <option>El Fashn</option>
+                                    <option>El Gamaliya</option>
+                                    <option>El Ganayin</option>
+                                    <option>El Ghanayem</option>
+                                    <option>El Hamam</option>
+                                    <option>El Hamool</option>
+                                    <option>Maadi</option>
+                                </select>
+                                <div class="invalid-feedback"> Please Provide a Valid Area. </div>
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Grand Total </label>
+                            <input type="text" class="form-control" name="AmountPaid" value="@Grand" readonly>
+                        </div>
+                        <div class="title"> <span>Payment</span> </div>
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                                <input id="credit" name="Payment_Type" type="radio" value="Credit Card" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="credit">Credit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="debit" name="Payment_Type" type="radio" value="Debit Card" class="custom-control-input" required>
+                                <label class="custom-control-label" for="debit">Debit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="paypal" name="Payment_Type" type="radio" value="PayPal" class="custom-control-input" required>
+                                <label class="custom-control-label" for="paypal">Paypal</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="cash" name="Payment_Type" type="radio" value="Cash" class="custom-control-input" required>
+                                <label class="custom-control-label" for="cash">Cash</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-name">Name on card</label>
+                                <input type="text" class="form-control" id="cc-name" placeholder=""> <small class="text-muted">Full name as displayed on card</small>
+                                <div class="invalid-feedback"> Name on card is required </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-number">Credit card number</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="">
+                                <div class="invalid-feedback"> Credit card number is required </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">Expiration</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="">
+                                <div class="invalid-feedback"> Expiration date required </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="">
+                                <div class="invalid-feedback"> Security code required </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="payment-icon">
+                                    <ul>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/1.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/2.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/3.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/5.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/7.png" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mb-1">
+                        <div class="col-12 d-flex shopping-box">
+                            <input type="submit" class="ml-auto btn hvr-hover" value="Place Order" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Cart -->

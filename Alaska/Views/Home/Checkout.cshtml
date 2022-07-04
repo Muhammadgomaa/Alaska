@@ -1,0 +1,83 @@
+﻿@using Alaska.Models;
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_CashLayout.cshtml";
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>SHOP CART</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
+                    <li class="breadcrumb-item active">Shop Cart</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th colspan="2" style="text-align:center">Update Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Session["Cart"] != null)
+                            {
+                                foreach (Items items in (List<Items>)Session["cart"])
+                                {
+                                    <tr>
+                                        <td>@items.Product.Prod_Name</td>
+                                        <td>@items.Product.Price "L.E"</td>
+                                        <td>@items.Quantity</td>
+                                        @if (items.Quantity == 1)
+                                        {
+                                            <td>
+                                                <a href="@Url.Action("IncreaseQuantity", "Home", new { id = items.Product.Prod_ID })" class="ml-auto btn hvr-hover" style="color:white">Increase Quantity</a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <a href="@Url.Action("IncreaseQuantity", "Home", new { id = items.Product.Prod_ID })" class="ml-auto btn hvr-hover" style="color:white">Increase Quantity</a>
+                                            </td>
+
+                                            <td>
+                                                <a href="@Url.Action("DecreaseQuantity","Home",new { id=items.Product.Prod_ID })" class="ml-auto btn hvr-hover" style="color:white">Decrease Quantity</a>
+                                            </td>
+                                        }
+
+                                    </tr>
+                                }
+                            }
+                        else {
+                                <tr>No Items Added in Shopping Cart</tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 d-flex shopping-box">
+            <a href="@Url.Action("CheckoutDetails")" class="ml-auto btn hvr-hover">Update Cart</a>
+        </div>
+
+
+    </div>
+</div>
+<!-- End Cart -->

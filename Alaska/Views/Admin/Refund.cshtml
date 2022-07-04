@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Refund";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Alaska.Models.Refund_Details> refund = ViewBag.Refund;
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> Orders /</span> Refund Details</h4>
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Refund Details Table</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>User First Name</th>
+                            <th>User Last Name</th>
+                            <th>User Address</th>
+                            <th>User Area</th>
+                            <th>User Country</th>
+                            <th>User City</th>
+                            <th>Amount Paid</th>
+                            <th>Payment Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @for (int i = 0; i < refund.Count; i++)
+                        {
+                            <tr>
+                                <td><strong>@refund[i].User.First_Name</strong></td>
+                                <td><strong>@refund[i].User.Last_Name</strong></td>
+                                <td>@refund[i].Address</td>
+                                <td>@refund[i].Area</td>
+                                <td>@refund[i].Country</td>
+                                <td>@refund[i].City</td>
+                                <td><strong>@refund[i].AmountPaid "L.E"</strong></td>
+                                <td>@refund[i].Payment_Type</td>
+                                <td>@refund[i].Date</td>
+                                <td>@refund[i].Time</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("AcceptRefund",new { id=refund[i].Shipping_ID })"><i class='bx bx-check'></i> Accept</a>
+                                            <a class="dropdown-item" href="@Url.Action("RefuseRefund",new { id=refund[i].Refund_ID })"><i class='bx bx-x'></i> Refuse</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

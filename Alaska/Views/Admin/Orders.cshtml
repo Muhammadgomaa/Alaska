@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Alaska.Models.Shipping_Details> orders = ViewBag.Orders;
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> Orders /</span> Orders Details</h4>
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Shipping Details Table</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Shipping ID</th>
+                            <th>User First Name</th>
+                            <th>User Last Name</th>
+                            <th>User Address</th>
+                            <th>User Area</th>
+                            <th>User Country</th>
+                            <th>User City</th>
+                            <th>Amount Paid</th>
+                            <th>Payment Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @for (int i = 0; i < orders.Count; i++)
+                        {
+                        <tr>
+                            <td>@orders[i].Shipping_ID</td>
+                            <td><strong>@orders[i].User.First_Name</strong></td>
+                            <td><strong>@orders[i].User.Last_Name</strong></td>
+                            <td>@orders[i].Address</td>
+                            <td>@orders[i].Area</td>
+                            <td>@orders[i].Country</td>
+                            <td>@orders[i].City</td>
+                            <td><strong>@orders[i].AmountPaid "L.E"</strong></td>
+                            <td>@orders[i].Payment_Type</td>
+                            <td>@orders[i].Date</td>
+                            <td>@orders[i].Time</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

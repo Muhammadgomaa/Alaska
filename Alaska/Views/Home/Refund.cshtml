@@ -1,0 +1,94 @@
+﻿@model Alaska.Models.Shipping_Details
+
+@{
+    ViewBag.Title = "Refund";
+    Layout = "~/Views/Shared/_CashLayout.cshtml";
+}
+
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>REFUND DETAILS</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
+                    <li class="breadcrumb-item active">Refund Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+
+        <div class="row my-5">
+            <div class="col-lg-6 col-sm-6">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>Order Summary / Shipping Information</h3>
+                    </div>
+                    <form class="needs-validation" id="form1" validate action="~/Home/Refund" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+
+                                <input type="hidden" class="form-control" name="User_ID" value="@Model.User_ID" readonly>
+                                <input type="hidden" class="form-control" name="Date" value="@Model.Date" readonly>
+                                <input type="hidden" class="form-control" name="Time" value="@Model.Time" readonly>
+                                <input type="hidden" class="form-control" name="Shipping_ID" value="@Model.Shipping_ID" readonly>
+
+                                <label for="firstName">First Name </label>
+                                <input type="text" class="form-control" value="@Model.User.First_Name" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Last name </label>
+                                <input type="text" class="form-control" value="@Model.User.Last_Name" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email Address </label>
+                            <input type="email" class="form-control" value="@Model.User.User_Email" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Phone Number </label>
+                            <input type="text" class="form-control" value="@Model.User.User_Phone" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address">Address </label>
+                            <input type="text" class="form-control" id="address" name="Address" value="@Model.Address" readonly required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="country">Country </label>
+                                <input type="text" class="form-control" id="address" name="Country" value="@Model.Country" readonly required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">Gov </label>
+                                <input type="text" class="form-control" id="address" name="City" value="@Model.City" readonly required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">Area </label>
+                                <input type="text" class="form-control" id="address" name="Area" value="@Model.Area" readonly required>
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Grand Total </label>
+                            <input type="text" class="form-control" name="AmountPaid" value="@Model.AmountPaid" readonly>
+                        </div>
+                        <div class="title"> <span>Payment</span> </div>
+                        <input type="text" class="form-control" name="Payment_Type" value="@Model.Payment_Type" readonly>
+                        <hr class="mb-1">
+                        <div class="col-12 d-flex shopping-box">
+                            <input type="submit" class="ml-auto btn hvr-hover" value="Refund" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Cart -->

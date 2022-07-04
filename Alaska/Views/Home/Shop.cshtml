@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    List<Alaska.Models.Category> categories = ViewBag.Catg;
+    List<Alaska.Models.Product> products = ViewBag.Prod;
+}
+
+
+<div class="new_arrivals" style="padding:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title new_arrivals_title">
+                    <h2>Alaska Shop</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <div class="new_arrivals_sorting">
+              
+                    <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
+                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
+                        
+                        @for (int i = 0; i < categories.Count(); i++)
+                        {
+                            //Avoid White Spaces
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@(string.Concat(categories[i].Cat_Name.Where(c=> !Char.IsWhiteSpace(c))))">@categories[i].Cat_Name</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+                    @for (int i = 0; i < products.Count(); i++)
+                    {
+                    <div class="product-item @(string.Concat(products[i].Category.Cat_Name.Where(c=> !Char.IsWhiteSpace(c))))">
+                        <div class="product product_filter">
+                            <div class="product_image">
+                                <img src="~/Product_Images/@products[i].Prod_Img" alt="">
+                            </div>
+                            <div class="favorite favorite_left"></div>
+                            <div class="product_info">
+                                @if (products[i].Quantity < 3)
+                                {
+                                    <h6 class="product_name"><a href="#">@products[i].Prod_Name</a></h6>
+                                    <div class="product_price">Out of Stock<span>Not Available</span></div>
+                                }
+                                else
+                                {
+                                    <h6 class="product_name"><a href="#">@products[i].Prod_Name</a></h6>
+                                    <div class="product_price">@products[i].Price "L.E"</div>
+                                }
+                            </div>
+                        </div>
+                        @if (products[i].Quantity < 3)
+                        {
+                            
+                        }
+                        else
+                        {
+                            <div class="red_button add_to_cart_button"><a href="@Url.Action("AddCart",new { id = products[i].Prod_ID })">add to cart</a></div>
+                        }
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
