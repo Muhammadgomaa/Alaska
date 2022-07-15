@@ -2,7 +2,7 @@
 
 @{
     DB_Context dB = new DB_Context();
-    ViewBag.Title = "Checkout Details";
+    ViewBag.Title = "PayPal Checkout Details";
     Layout = "~/Views/Shared/_CashLayout.cshtml";
     int id = int.Parse(Session["userid"].ToString());
     User user = dB.Users.Where(n => n.User_ID == id).FirstOrDefault();
@@ -17,10 +17,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>CHECKOUT DETAILS</h2>
+                <h2>PAYPAL CHECKOUT DETAILS</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout Details</li>
+                    <li class="breadcrumb-item active">PayPal Checkout Details</li>
                 </ul>
             </div>
         </div>
@@ -91,16 +91,16 @@
                     <hr>
                     <div class="d-flex gr-total">
                         <h5>Grand Total</h5>
-                        @{ double Grand = Tax + Total;}
+                        @{ 
+                            double Grand = Tax + Total;
+                            Session["SesTotal"] = Grand;
+
+                            }
                         <div class="ml-auto h5"> @Grand "L.E" </div>
                     </div>
                     <hr>
                     <div class="d-flex">
-                        <a href="@Url.Action("Credit")" class="ml-auto btn hvr-hover" style="color:white">Credit Card</a>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                        <a href="@Url.Action("PayPal")" class="ml-auto btn hvr-hover" style="color:white">PayPal</a>
+                        <a href="@Url.Action("PaymentWithPapal","Payment")" class="ml-auto btn hvr-hover" style="color:white">Pay with PayPal Mail</a>
                     </div>
                     <hr>
                 </div>
@@ -279,15 +279,12 @@
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Grand Total </label>
                             <input type="text" class="form-control" name="AmountPaid" value="@Grand" readonly>
-                            @{
-                                Session["SesTotal"] = Grand;
-                            }
                         </div>
                         <div class="title"> <span>Payment</span> </div>
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="credit" name="Payment_Type" type="radio" value="Cash" class="custom-control-input" required checked>
-                                <label class="custom-control-label" for="credit">Cash</label>
+                                <input id="credit" name="Payment_Type" type="radio" value="PayPal" class="custom-control-input" required checked>
+                                <label class="custom-control-label" for="credit">PayPal</label>
                             </div>
                         </div>
                         <hr class="mb-1">

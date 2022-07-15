@@ -211,6 +211,19 @@
 	$(".brand-box").niceScroll({
 		cursorcolor: "#9b9b9c",
 	});
-	
+
+	$(function () {
+		$("input[type='button']").click(function (){
+			if ($(this).val() == 'Credit Card') {
+				document.getElementById("credit").disabled;
+			}
+			else if ($(this).val() == 'Debit Card') {
+				$('.row input').prop({ disabled: true });
+			}
+			else if ($(this).val() == 'PayPal') {
+				$('.row input').prop({ disabled: true });
+			}
+		});
+	});
 	
 }(jQuery));

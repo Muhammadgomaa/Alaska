@@ -52,6 +52,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -130,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +146,7 @@
     <Compile Include="Models\Refund_Details.cs" />
     <Compile Include="Models\Shipping_Details.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="PaypalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +154,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Success_Failer.css" />
     <Content Include="Dashboard_Files\assets\css\demo.css" />
     <Content Include="Dashboard_Files\assets\img\avatars\1.png" />
     <Content Include="Dashboard_Files\assets\img\avatars\5.png" />
@@ -179,12 +185,18 @@
     <Content Include="Dashboard_Files\assets\img\icons\brands\mailchimp.png" />
     <Content Include="Dashboard_Files\assets\img\icons\brands\slack.png" />
     <Content Include="Dashboard_Files\assets\img\icons\brands\twitter.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\category.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-primary.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-success.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\cc-warning.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\chart-success.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\chart.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\customers.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\orders.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\paypal.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\product.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\refund.png" />
+    <Content Include="Dashboard_Files\assets\img\icons\unicons\sales.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\wallet-info.png" />
     <Content Include="Dashboard_Files\assets\img\icons\unicons\wallet.png" />
     <Content Include="Dashboard_Files\assets\img\illustrations\girl-doing-yoga-light.png" />
@@ -553,6 +565,9 @@
     <Content Include="Dashboard_Files\scss\_custom-variables\_support.scss" />
     <Content Include="Dashboard_Files\scss\_theme\_common.scss" />
     <Content Include="Dashboard_Files\scss\_theme\_theme.scss" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -708,6 +723,11 @@
     <Content Include="Views\Home\UpdateInformation.cshtml" />
     <Content Include="Views\Home\UpdatePassword.cshtml" />
     <Content Include="Views\Admin\Message.cshtml" />
+    <Content Include="Views\Payment\PaymentWithPapal.cshtml" />
+    <Content Include="Views\Home\Credit.cshtml" />
+    <Content Include="Views\Payment\FailureView.cshtml" />
+    <Content Include="Views\Payment\SuccessView.cshtml" />
+    <Content Include="Views\Home\PayPal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

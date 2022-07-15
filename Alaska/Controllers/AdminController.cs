@@ -87,6 +87,55 @@ namespace Alaska.Controllers
             int id = int.Parse(Session["userid"].ToString());
             User user = dB.Users.Where(n => n.User_ID == id).SingleOrDefault();
 
+            double TotalSales = 0 , TotalRefund = 0;
+
+            List<double> Sales = dB.Shipping_Details.Select(n => n.AmountPaid).ToList();
+
+            for(int i=0; i < Sales.Count; i++)
+            {
+                if(Sales.Count == 0)
+                {
+                    TotalSales = 0;
+                    ViewBag.Sales = TotalSales;
+                }
+                else
+                {
+                    TotalSales += Sales[i];
+                    ViewBag.Sales = TotalSales;
+                }
+            }
+
+            List<double> Refund = dB.Refund_Details.Select(n => n.AmountPaid).ToList();
+
+            for (int i = 0; i < Refund.Count; i++)
+            {
+                if (Refund.Count == 0)
+                {
+                    TotalRefund = 0;
+                    ViewBag.Refund = TotalRefund;
+                }
+                else
+                {
+                    TotalRefund += Refund[i];
+                    ViewBag.Refund = TotalRefund;
+                }
+            }
+
+            List<Shipping_Details> Orders = dB.Shipping_Details.ToList();
+            ViewBag.Orders = Orders.Count();
+
+            List<Refund_Details> NumRefund = dB.Refund_Details.ToList();
+            ViewBag.RefundNum = NumRefund.Count();
+
+            List<User> Customer= dB.Users.Where(n=>n.User_Role=="User").ToList();
+            ViewBag.Customers = Customer.Count();
+
+            List<Product> products  = dB.Products.ToList();
+            ViewBag.Products = products.Count();
+
+            List<Category> category  = dB.Categories.ToList();
+            ViewBag.Category = category.Count();
+
             return View(user);
         }
 

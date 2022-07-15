@@ -336,6 +336,16 @@ namespace Alaska.Controllers
             return View();
         }
 
+        public ActionResult Credit()
+        {
+            return View();
+        }
+
+        public ActionResult PayPal()
+        {
+            return View();
+        }
+
         public ActionResult ShippingDetails(Shipping_Details shipping , string submit)
         {
 

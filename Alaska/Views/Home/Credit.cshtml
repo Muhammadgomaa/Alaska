@@ -2,7 +2,7 @@
 
 @{
     DB_Context dB = new DB_Context();
-    ViewBag.Title = "Checkout Details";
+    ViewBag.Title = "Credit Checkout Details";
     Layout = "~/Views/Shared/_CashLayout.cshtml";
     int id = int.Parse(Session["userid"].ToString());
     User user = dB.Users.Where(n => n.User_ID == id).FirstOrDefault();
@@ -17,10 +17,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>CHECKOUT DETAILS</h2>
+                <h2>CREDIT CHECKOUT DETAILS</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="~/Home/Home">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout Details</li>
+                    <li class="breadcrumb-item active">Credit Checkout Details</li>
                 </ul>
             </div>
         </div>
@@ -93,14 +93,6 @@
                         <h5>Grand Total</h5>
                         @{ double Grand = Tax + Total;}
                         <div class="ml-auto h5"> @Grand "L.E" </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                        <a href="@Url.Action("Credit")" class="ml-auto btn hvr-hover" style="color:white">Credit Card</a>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                        <a href="@Url.Action("PayPal")" class="ml-auto btn hvr-hover" style="color:white">PayPal</a>
                     </div>
                     <hr>
                 </div>
@@ -286,8 +278,47 @@
                         <div class="title"> <span>Payment</span> </div>
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="credit" name="Payment_Type" type="radio" value="Cash" class="custom-control-input" required checked>
-                                <label class="custom-control-label" for="credit">Cash</label>
+                                <input id="credit" name="Payment_Type" type="radio" value="Credit Card" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="credit">Credit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="debit" name="Payment_Type" type="radio" value="Debit Card" class="custom-control-input" required>
+                                <label class="custom-control-label" for="debit">Debit card</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-name">Name on card</label>
+                                <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
+                                <div class="invalid-feedback"> Name on card is required </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-number">Credit card number</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="" required> <small class="text-muted">Must be 16 digits numbers only</small>
+                                <div class="invalid-feedback"> Credit card number is required </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">Expiration</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                <div class="invalid-feedback"> Expiration date required </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                <div class="invalid-feedback"> Security code required </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="payment-icon">
+                                    <ul>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/1.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/2.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/3.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/5.png" alt=""></li>
+                                        <li><img class="img-fluid" src="~/Second_Template_Files/images/payment-icon/7.png" alt=""></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <hr class="mb-1">
